@@ -1,0 +1,49 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+.petDetails {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+input {
+  margin: 0 10px;
+}
+
+.pet {
+  padding-bottom: 60px;
+  padding-top: 15px;
+  border-bottom: solid medium black;
+  width: auto;
+}
+
+.petImage {
+  width: 100%;
+  max-width: 600px;
+}
+
+@media screen and (min-width: 450px) {
+  .petDetails {
+    flex-direction: row;
+  }
+  .pet {
+    border: none;
+    margin: 0 20px;
+  }
+}
