@@ -14,7 +14,7 @@ The Petful app mimics an animal shelter where cats and dogs are up for adoption,
 A user may submit their info to add themselves to the line to adopt, and when they are next in line, they will see the "adopt" buttons available under the pet details.
 For this demo to simulate other users, the customer line is pre-populated with 3 users and each user in line will adopt a pet every 5 seconds and the next users move up a spot in line. When the live user is the current user in line to adopt, additional customers will get in line until their are five users.
 
-##Tech Stack
+## Tech Stack
 
 ### Web Client
 
