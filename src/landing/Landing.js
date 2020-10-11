@@ -15,7 +15,7 @@ export default class Landing extends Component {
         </section>
         <img
           className="petImage"
-          src="http://placekitten.com/300/300"
+          src="https://placekitten.com/300/300"
           alt="Landing Cat"
         />
         <br />
