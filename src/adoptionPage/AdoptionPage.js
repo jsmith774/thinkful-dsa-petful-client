@@ -11,6 +11,7 @@ export default class AdoptionPage extends Component {
     cats: [],
     currentUser: '',
     nextInLine: '',
+    isDisabled: false,
   };
 
   fakeUsers = [
@@ -62,9 +63,12 @@ export default class AdoptionPage extends Component {
 
     this.setState({ nextInLine: this.state.people[0] });
 
-    setInterval(() => {
-      this.handleIntervalTickEvent();
-    }, 5000);
+    //TODO: FIX: Move Interval:  Not starting interval until current user 'gets in line'
+    //* Commented out following block of code
+    //! Remove comment markers from following 3 lines
+    // setInterval(() => {
+    //   this.handleIntervalTickEvent();
+    // }, 5000);
   }
 
   // TODO implement adopt methods
@@ -107,7 +111,7 @@ export default class AdoptionPage extends Component {
         people: people,
         cats: cats,
         dogs: dogs,
-        nextInLine: people[0],
+        //nextInLine: people[0],
         currentUser: '',
       });
     });
@@ -120,7 +124,18 @@ export default class AdoptionPage extends Component {
 
     AdoptionService.postPerson(name.value).then(() => {
       people.push(name.value);
-      this.setState({ people: people, currentUser: name.value });
+      this.setState({
+        people: people,
+        currentUser: name.value,
+        isDisabled: true,
+      });
+      //TODO: FIX: Move Interval:  Not starting interval until current user 'gets in line'
+      //* Added following block of code
+      //! Remove following 3 lines
+      setInterval(() => {
+        console.log('SETTING INTERVAL...');
+        this.handleIntervalTickEvent();
+      }, 5000);
     });
   };
 
@@ -130,9 +145,11 @@ export default class AdoptionPage extends Component {
     const dogs = this.state.dogs;
 
     const currentUser = this.state.currentUser;
-    let nextInLine = this.state.nextInLine;
+    //let nextInLine = this.state.nextInLine;
+    let nextInLine = this.state.people[0];
 
     if (nextInLine === currentUser) {
+      //if currentUserIsWaiting
       if (people.length < 5) {
         //add random person
         const rando = this.fakeUsers[people.length];
@@ -177,7 +194,11 @@ export default class AdoptionPage extends Component {
         <form className="nameForm" onSubmit={this.handleAddPerson}>
           <label htmlFor="adoptForm">Name:</label>
           <input name="name" type="text" />
-          <button type="submit">Get In Line</button>
+          {this.state.isDisabled ? (
+            "You're in line"
+          ) : (
+            <button type="submit">Get In Line</button>
+          )}
         </form>
       </>
     );

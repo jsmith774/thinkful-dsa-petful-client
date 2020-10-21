@@ -38,6 +38,13 @@ input {
   max-width: 600px;
 }
 
+button {
+  margin: 20px;
+  background-color: blue;
+  color: white;
+  box-shadow: 5px 5px 5px black;
+}
+
 @media screen and (min-width: 450px) {
   .petDetails {
     flex-direction: row;
